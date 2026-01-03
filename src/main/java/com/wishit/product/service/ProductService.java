@@ -39,7 +39,7 @@ public class ProductService {
 	}
 
 	public List<Product> getProductByVendor(Long vendorId){
-		return productRepo.findbyVendorId(vendorId);
+		return productRepo.findByVendorId(vendorId);
 	}
 	
 	public List<Product> getProductByCategory(String categoryName){

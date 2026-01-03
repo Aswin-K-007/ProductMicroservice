@@ -9,7 +9,7 @@ import com.wishit.product.entity.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>{
-	List<Product> findbyVendorId(Long vendorId);
+	List<Product> findByVendorId(Long vendorId);
 
     @Query("""
         SELECT p

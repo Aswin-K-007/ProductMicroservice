@@ -2,7 +2,7 @@ package com.wishit.product.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +27,7 @@ public class Product {
 	private Integer stockQuantity;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
     private List<ProductImage> images = new ArrayList<>();
 	
 	

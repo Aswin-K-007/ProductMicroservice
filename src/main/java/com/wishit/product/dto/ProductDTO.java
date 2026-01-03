@@ -9,8 +9,15 @@ public class ProductDTO {
     private String description;
     private Double price;
     private Integer stockQuantity;
+    private Long vendorId;
     
-    private List<ProductImageDTO> images;
+    public Long getVendorId() {
+		return vendorId;
+	}
+	public void setVendorId(Long vendorId) {
+		this.vendorId = vendorId;
+	}
+	private List<ProductImageDTO> images;
     
 	public String getName() {
 		return name;

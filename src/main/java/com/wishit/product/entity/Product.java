@@ -30,6 +30,12 @@ public class Product {
 	@JsonManagedReference
     private List<ProductImage> images = new ArrayList<>();
 	
+	@JoinColumn(name = "vendor_id", nullable = false)
+	private Long vendorId;
+	
+	@ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 	
 	public String getName() {
 		return name;
@@ -69,6 +75,30 @@ public class Product {
 
 	public void setImages(List<ProductImage> images) {
 		this.images = images;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getVendorId() {
+		return vendorId;
+	}
+
+	public void setVendorId(Long vendorId) {
+		this.vendorId = vendorId;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	

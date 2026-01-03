@@ -21,6 +21,7 @@ public class ProductService {
         product.setDescription(prodDTO.getDescription());
         product.setPrice(prodDTO.getPrice());
         product.setStockQuantity(prodDTO.getStockQuantity());
+        product.setVendorId(prodDTO.getVendorId());
         
         List<ProductImage> images  = prodDTO.getImages().stream().map(imgIn ->{
         	ProductImage img = new ProductImage();
@@ -37,4 +38,11 @@ public class ProductService {
 		return productRepo.findAll();
 	}
 
+	public List<Product> getProductByVendor(Long vendorId){
+		return productRepo.findbyVendorId(vendorId);
+	}
+	
+	public List<Product> getProductByCategory(String categoryName){
+		return productRepo.findProductsByCategoryName(categoryName);
+	}
 }

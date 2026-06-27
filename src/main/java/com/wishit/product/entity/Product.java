@@ -8,8 +8,6 @@ import lombok.*;
 
 @Entity
 @Table(name="product")
-//@Getter
-//@Setter
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,7 +32,7 @@ public class Product {
 	private Long vendorId;
 	
 	@ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     private Category category;
 	
 	public String getName() {

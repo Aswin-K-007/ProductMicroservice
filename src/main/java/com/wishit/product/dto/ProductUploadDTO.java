@@ -2,8 +2,10 @@ package com.wishit.product.dto;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
 
-public class ProductDTO {
+
+public class ProductUploadDTO {
 	private String name;
     private String description;
     private Double price;
@@ -16,7 +18,7 @@ public class ProductDTO {
 	public void setVendorId(Long vendorId) {
 		this.vendorId = vendorId;
 	}
-	private List<ProductImageDTO> images;
+	private List<MultipartFile> images;
     
 	public String getName() {
 		return name;
@@ -42,12 +44,13 @@ public class ProductDTO {
 	public void setStockQuantity(Integer stockQuantity) {
 		this.stockQuantity = stockQuantity;
 	}
-	public List<ProductImageDTO> getImages() {
+	public List<MultipartFile> getImages() {
 		return images;
 	}
-	public void setImages(List<ProductImageDTO> images) {
+	public void setImages(List<MultipartFile> images) {
 		this.images = images;
 	}
     
     
 }
+

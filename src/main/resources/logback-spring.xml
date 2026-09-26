@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!-- ========================================================= -->
+    <!-- APPLICATION CONFIGURATION                                 -->
+    <!-- ========================================================= -->
+
+    <property name="APP_NAME" value="finpro-gateway"/>
+    <property name="LOG_DIR" value="logs"/>
+
+
+    <!-- ========================================================= -->
+    <!-- STARTUP DATE/TIME                                         -->
+    <!-- Generated once when application starts                    -->
+    <!-- ========================================================= -->
+
+    <timestamp
+            key="START_DATE"
+            datePattern="yyyy-MM-dd"/>
+
+    <timestamp
+            key="START_TIME"
+            datePattern="yyyy-MM-dd_HH-mm-ss"/>
+
+
+    <!-- ========================================================= -->
+    <!-- LOG FORMAT                                                 -->
+    <!-- ========================================================= -->
+
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} | ${APP_NAME} | %-5level | %logger{40} | %msg%n"/>
+
+
+    <!-- ========================================================= -->
+    <!-- CONSOLE                                                    -->
+    <!-- ========================================================= -->
+
+    <appender name="CONSOLE"
+              class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+
+    </appender>
+
+
+    <!-- ========================================================= -->
+    <!-- FILE                                                       -->
+    <!-- ========================================================= -->
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.FileAppender">
+
+        <!--
+            Example:
+
+            logs/
+            └── 2026-09-26/
+                └── finpro-gateway-2026-09-26_09-15-32.log
+        -->
+
+        <file>
+            ${LOG_DIR}/${START_DATE}/${APP_NAME}-${START_TIME}.log
+        </file>
+
+        <!-- Never append to an old file -->
+        <append>false</append>
+
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+
+    </appender>
+
+
+    <!-- ========================================================= -->
+    <!-- APPLICATION LOGGING                                       -->
+    <!-- ========================================================= -->
+
+    <logger
+            name="com.finpro"
+            level="DEBUG"/>
+
+
+    <!-- ========================================================= -->
+    <!-- SPRING LOGGING                                             -->
+    <!-- ========================================================= -->
+
+    <logger
+            name="org.springframework"
+            level="INFO"/>
+
+    <logger
+            name="org.springframework.security"
+            level="INFO"/>
+
+
+    <!-- ========================================================= -->
+    <!-- HIBERNATE                                                  -->
+    <!-- ========================================================= -->
+
+    <logger
+            name="org.hibernate"
+            level="INFO"/>
+
+
+    <!-- ========================================================= -->
+    <!-- ROOT LOGGER                                                -->
+    <!-- ========================================================= -->
+
+    <root level="INFO">
+
+        <appender-ref ref="CONSOLE"/>
+
+        <appender-ref ref="FILE"/>
+
+    </root>
+
+</configuration>

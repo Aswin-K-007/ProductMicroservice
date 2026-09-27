@@ -43,25 +43,18 @@ public class UserProductController {
         return ResponseEntity.ok(product);
     }
 
-    @PutMapping("/{id}/add_remove_item")
+    @PutMapping("/{id}/update_stock")
     public ResponseEntity<ProductDTO> updateQuantity(
             @PathVariable Long id,
-            @RequestParam String operation)
+            @RequestParam Integer quantity)
             throws BackendException {
 
-        int change;
-
-        if ("+".equals(operation)) {
-            change = 1;
-        } else if ("-".equals(operation)) {
-            change = -1;
-        } else {
-            throw new BackendException(
+        if (quantity < 0) {
+        	throw new BackendException(
                     ErrorCodes.INVALID_OPERATION);
         }
-
         ProductDTO product =
-                prodServ.updateQuantity(id, change);
+                prodServ.updateQuantity(id, quantity);
 
         return ResponseEntity.ok(product);
     }

@@ -224,7 +224,7 @@ public class ProductService {
     }
 
 
-    public ProductDTO updateQuantity(Long id, int change)
+    public ProductDTO updateQuantity(Long id, int quantity)
             throws BackendException {
 
         Product product = productRepo.findById(id)
@@ -232,16 +232,16 @@ public class ProductService {
                         new BackendException(
                                 ErrorCodes.PRODUCT_NOT_FOUND));
 
-        int quantity =
-                product.getStockQuantity() + change;
+        int newQuantity =
+                product.getStockQuantity() - quantity;
 
-        if (quantity < 0) {
+        if (newQuantity < 0) {
 
             throw new BackendException(
                     ErrorCodes.INVALID_QUANTITY);
         }
 
-        product.setStockQuantity(quantity);
+        product.setStockQuantity(newQuantity);
 
         return convertToDTO(
                 productRepo.save(product));

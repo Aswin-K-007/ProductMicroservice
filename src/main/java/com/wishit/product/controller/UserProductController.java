@@ -51,7 +51,7 @@ public class UserProductController {
 
         if (quantity < 0) {
         	throw new BackendException(
-                    ErrorCodes.INVALID_OPERATION);
+                    ErrorCodes.INVALID_QUANTITY);
         }
         ProductDTO product =
                 prodServ.updateQuantity(id, quantity);

@@ -13,6 +13,7 @@ public class ErrorCodes {
     public static final int FILE_UPLOAD_ERROR = 1005;
     public static final int PRODUCT_CREATION_ERROR = 1006;
     public static final int PRODUCT_FETCH_ERROR = 1007;
+    public static final int OUT_OF_STOCK = 1008;
 
     private static final Map<Integer, String> ERROR_MESSAGES = Map.of(
             PRODUCT_NOT_FOUND,
@@ -34,7 +35,10 @@ public class ErrorCodes {
                 "Failed to create product",
 
             PRODUCT_FETCH_ERROR,
-                "Failed to fetch products"
+                "Failed to fetch products",
+                
+            OUT_OF_STOCK,
+            	"Product is Currently Out of Stock"
     );
 
     private static final Map<Integer, HttpStatus> ERROR_STATUS = Map.of(
@@ -45,6 +49,9 @@ public class ErrorCodes {
                 HttpStatus.BAD_REQUEST,
 
             INVALID_QUANTITY,
+                HttpStatus.BAD_REQUEST,
+                
+            OUT_OF_STOCK,
                 HttpStatus.BAD_REQUEST,
 
             INTERNAL_ERROR,

@@ -238,7 +238,7 @@ public class ProductService {
         if (newQuantity < 0) {
 
             throw new BackendException(
-                    ErrorCodes.INVALID_QUANTITY);
+                    ErrorCodes.OUT_OF_STOCK);
         }
 
         product.setStockQuantity(newQuantity);

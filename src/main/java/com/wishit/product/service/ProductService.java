@@ -11,7 +11,6 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,7 +48,7 @@ public class ProductService {
 
 	    List<ProductImage> images = new ArrayList<>();
 
-	    Path uploadDir = Paths.get("uploads/products");
+	    Path uploadDir = Paths.get("uploads/products/");
 
 	    if (!Files.exists(uploadDir)) {
 
@@ -106,7 +105,7 @@ public class ProductService {
 
 	        ProductImage img = new ProductImage();
 
-	        img.setImageUrl(uploadDir.toString() + fileName);
+	        img.setImageUrl(fileName);
 	        img.setProduct(product);
 
 	        images.add(img);
